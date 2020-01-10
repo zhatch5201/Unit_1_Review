@@ -13,14 +13,16 @@ showClock();
 setInterval('showClock()', 1000);
 // I'm having this function show the date for the july 4th of 2020, that way I don't have to work with weird random numbers
 function showClock() {
-	var thisDay = new Date('May 19, 2018 9:31:27');
+	var thisDay = new Date();
+	// I also don't know if this is what it wants because the date/time won't change becuase it has passed and preset
 	var newDate = new Date();
-	var localDate = thisDay.toDateString();
+	var localDate = thisDay.toLocaleDateString();
 	// console.log(thisDay + ' ' + localDate);
-	document.getElementById('currentTime').innerHTML = '<span>' + thisDay + '</span><span>' + localDate + '</span>';
+	document.getElementById('currentTime').innerHTML =
+		'<span>' + thisDay.toLocaleTimeString() + '</span><span>' + localDate + '</span>';
 	var j4Date = nextJuly4(thisDay);
 	j4Date.setHours(21);
-	var jDate = new Date('July 4, 2020 9:00:00');
+	var jDate = new Date('July 4, 2020 21:00:00');
 	var days = (jDate - newDate) / (1000 * 60 * 60 * 24);
 	var hrs = (days - Math.floor(days)) * 24;
 	var mins = (hrs - Math.floor(hrs)) * 60;
